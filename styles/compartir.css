@@ -1,0 +1,47 @@
+body {
+
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.share-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #25D366;
+    color: #fff;
+    border-radius: 20px;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.share-btn:hover {
+    background-color: #128C7E;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #0a8dff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0077d9;
+}
+
+#btn-volver{
+
+    background-color: rgb(241, 190, 19);
+}

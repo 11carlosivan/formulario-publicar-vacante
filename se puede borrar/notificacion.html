@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <script>
+    function copyToClipboard() {
+        
+        toastr.success('Copiado al portapapeles!');
+    }
+    </script>
+</head>
+<body>
+    <div id="textToCopy">Este es el texto a copiar.</div>
+    <button onclick="copyToClipboard('textToCopy')">Copiar al portapapeles</button>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+</body>
+</html>

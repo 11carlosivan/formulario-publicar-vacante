@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Compartir en WhatsApp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .share-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #25D366;
+            color: #fff;
+            border-radius: 20px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .share-btn:hover {
+            background-color: #128C7E;
+        }
+        input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 10px;
+            width: 100%;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: #0a8dff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0077d9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Compartir URLs en WhatsApp</h1>
+    <input id="phone-number" type="text" placeholder="Ingresa el número de teléfono" />
+
+    <div id="input-container">
+        <input type="text" placeholder="Ingresa la URL" />
+    </div>
+    <button onclick="addURLInput()">Añadir otra URL</button>
+    <button id="share-btn" onclick="shareAllURLs()" class="share-btn">Compartir todas las URLs en WhatsApp</button>
+
+    <script>
+        var whatsappLinks = [];
+
+        function addURLInput() {
+            var inputContainer = document.getElementById('input-container');
+            var newInput = document.createElement('input');
+            newInput.type = 'text';
+            newInput.placeholder = 'Ingresa la URL';
+            inputContainer.appendChild(newInput);
+        }
+
+        function shareAllURLs() {
+            for (var i = 0; i < whatsappLinks.length; i++) {
+                window.open(whatsappLinks[i], '_blank');
+            }
+        }
+
+        function generateWhatsAppLinks() {
+            var phoneNumber = document.getElementById('phone-number').value;
+            var inputContainer = document.getElementById('input-container');
+
+            whatsappLinks = [];
+
+            var inputs = inputContainer.getElementsByTagName('input');
+            for (var i = 0; i < inputs.length; i++) {
+                whatsappLinks.push('https://wa.me/' + phoneNumber + '?text=' + encodeURIComponent(inputs[i].value));
+            }
+        }
+
+        document.getElementById('input-container').addEventListener('change', generateWhatsAppLinks);
+        document.getElementById('phone-number').addEventListener('change', generateWhatsAppLinks);
+    </script>
+</body>
+</html>

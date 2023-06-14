@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/config.css">
+    <link rel="stylesheet" href="../styles/compartir.css">
+    <link rel="shortcut icon" href="../img/logo-nuevo-para-redes-sociales.png" type="image/x-icon">
+    <title>Compartir enlaces</title>
+</head>
+<body>
+    
+    <h1>Compartir URLs en WhatsApp</h1>
+    <input id="phone-number" type="text" placeholder="Ingresa el número de teléfono, ejemplo: 18290001111" />
+
+    <div id="input-container">
+        <input type="text" placeholder="Ingresa la URL" />
+    </div>
+    <button onclick="addURLInput()">Añadir otra URL</button>
+    <button id="share-btn" onclick="shareAllURLs()" class="share-btn">Compartir todas las URLs en WhatsApp</button>
+    <button class="share-btn" id="btn-volver" onclick="volver()">
+        Volver
+    </button>
+
+    <script>
+        var whatsappLinks = [];
+
+        function addURLInput() {
+            var inputContainer = document.getElementById('input-container');
+            var newInput = document.createElement('input');
+            newInput.type = 'text';
+            newInput.placeholder = 'Ingresa la URL';
+            inputContainer.appendChild(newInput);
+        }
+
+        function shareAllURLs() {
+            for (var i = 0; i < whatsappLinks.length; i++) {
+                window.open(whatsappLinks[i], '_blank');
+            }
+        }
+
+        function generateWhatsAppLinks() {
+            var phoneNumber = document.getElementById('phone-number').value;
+            var inputContainer = document.getElementById('input-container');
+
+            whatsappLinks = [];
+
+            var inputs = inputContainer.getElementsByTagName('input');
+            for (var i = 0; i < inputs.length; i++) {
+                whatsappLinks.push('https://wa.me/' + phoneNumber + '?text=' + encodeURIComponent(inputs[i].value));
+            }
+        }
+
+        function volver()
+        {
+            window.location.href = "tablero.html"
+        }
+
+        document.getElementById('input-container').addEventListener('change', generateWhatsAppLinks);
+        document.getElementById('phone-number').addEventListener('change', generateWhatsAppLinks);
+    </script>
+
+    <script type="module" src="../controllers/app.js"></script>
+
+</body>
+</html>
