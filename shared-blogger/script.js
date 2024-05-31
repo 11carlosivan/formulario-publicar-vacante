@@ -99,10 +99,7 @@ function extractSnippet(htmlContent) {
     return snippet;
 }
 
-// Función para manejar el botón de volver atrás
-document.getElementById('back-button').onclick = () => {
-    history.back();
-};
+
 
 // Función para manejar el botón de refrescar la página
 document.getElementById('refresh-button').onclick = () => {
